@@ -15,10 +15,14 @@ function App() {
   };
 
   const handleCalculate = () => {
-    try {
-      setResult(eval(input));
-    } catch (error) {
-      setResult("Error");
+    if (!input || /[+\-*/]$/.test(input)) {
+      setResult("Error: Incomplete expression");
+    } else {
+      try {
+        setResult(eval(input));
+      } catch (error) {
+        setResult("Error");
+      }
     }
   };
 
